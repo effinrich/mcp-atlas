@@ -7,11 +7,11 @@ it's added; nothing here is invented.
 Built by [Rich Tillman](https://richtillman.xyz) — creator of
 [ForgeKit](https://forgekit.cloud).
 
-## Status
+## Live
 
-Early — scaffold + tooling live, content and search UI in progress. See the
-[roadmap](../../.supergoal) for the full build plan if you're curious how this got
-built.
+**[mcp-atlas-orcin.vercel.app](https://mcp-atlas-orcin.vercel.app)** — 18 real,
+link-verified MCP servers, searchable and filterable. Lighthouse: 100 accessibility,
+97 performance.
 
 ## Tech stack
 
