@@ -1,0 +1,100 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonicalURL} />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    {/* Loaded non-blocking (preload + swap-in) so web fonts don't delay first paint. */}
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      />
+    </noscript>
+
+    <title>{title}</title>
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <header class="sticky top-0 z-50 bg-zinc-950/95 backdrop-blur border-b border-zinc-800">
+      <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+        <a href="/" class="flex items-center gap-3">
+          <div class="w-8 h-8 bg-blue-600 rounded flex items-center justify-center text-white font-bold text-sm">
+            M
+          </div>
+          <span class="text-lg font-semibold tracking-tight">MCP Atlas</span>
+        </a>
+        <nav class="flex items-center gap-6">
+          <a
+            href="https://github.com/modelcontextprotocol/servers/issues/new"
+            class="text-sm text-zinc-400 hover:text-white transition-colors"
+          >
+            Submit a server
+          </a>
+          <a
+            href="https://github.com/effinrich/mcp-atlas"
+            class="text-zinc-400 hover:text-white transition-colors"
+            aria-label="MCP Atlas on GitHub"
+          >
+            GitHub
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="flex-1 max-w-6xl mx-auto w-full px-6 py-10">
+      <slot />
+    </main>
+
+    <footer class="border-t border-zinc-800">
+      <div
+        class="max-w-6xl mx-auto px-6 py-8 flex flex-col md:flex-row items-center justify-between text-zinc-400 text-xs gap-4"
+      >
+        <p>
+          Built by <a href="https://richtillman.xyz" class="hover:text-zinc-300 underline"
+            >Rich Tillman</a
+          > — every entry sourced and link-checked, nothing invented.
+        </p>
+        <a href="/data-provenance" class="hover:text-zinc-300 transition-colors"
+          >How this data is verified</a
+        >
+      </div>
+    </footer>
+  </body>
+</html>

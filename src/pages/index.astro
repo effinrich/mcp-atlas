@@ -1,22 +1,44 @@
 ---
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ServerCard from "../components/ServerCard.astro";
+import SearchFilter from "../components/SearchFilter.astro";
+
+const servers = await getCollection("servers");
+const sorted = servers.sort((a, b) => a.data.name.localeCompare(b.data.name));
+const categories = [...new Set(servers.map((s) => s.data.category))].sort();
+
 const title = "MCP Atlas";
-const description = "A curated directory of real, verified MCP servers.";
+const description = "A curated directory of real, verified MCP servers — official and community.";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="description" content={description} />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body>
-		<main>
-			<h1>{title}</h1>
-			<p>{description}</p>
-			<p>Directory content is being seeded — check back soon.</p>
-		</main>
-	</body>
-</html>
+<BaseLayout title={title} description={description}>
+  <div class="mb-10 max-w-3xl">
+    <h1 class="text-3xl font-semibold tracking-tight mb-3">MCP Atlas</h1>
+    <p class="text-zinc-400 text-lg">
+      A curated directory of real, verified Model Context Protocol servers — official and
+      community. Every entry is link-checked before it's added;
+      <a href="/data-provenance" class="underline hover:text-zinc-200">see how</a>.
+    </p>
+  </div>
+
+  <SearchFilter categories={categories} />
+
+  <div id="server-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+    {
+      sorted.map((server) => (
+        <ServerCard
+          id={server.id}
+          name={server.data.name}
+          description={server.data.description}
+          category={server.data.category}
+          official={server.data.official}
+        />
+      ))
+    }
+  </div>
+
+  <p id="empty-state" class="hidden text-center text-zinc-400 py-16">
+    No servers match that search. Try a different term or clear the filters.
+  </p>
+</BaseLayout>

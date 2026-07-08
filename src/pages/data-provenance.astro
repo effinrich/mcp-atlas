@@ -1,0 +1,49 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const title = "How this data is verified — MCP Atlas";
+const description = "Every entry in MCP Atlas is sourced and link-checked before it's added.";
+---
+
+<BaseLayout title={title} description={description}>
+  <div class="max-w-2xl prose-invert">
+    <h1 class="text-2xl font-semibold tracking-tight mb-6">How this data is verified</h1>
+
+    <p class="text-zinc-300 leading-relaxed mb-4">
+      Every entry was sourced via live web search and verified with a real HTTP check — the repo
+      URL directly, and for npm packages, the npm registry API rather than npmjs.com's package
+      page (which blocks automated requests with a 403 regardless of whether the package is real).
+    </p>
+
+    <h2 class="text-sm uppercase tracking-wider text-zinc-400 font-mono mt-8 mb-3">Method</h2>
+    <ol class="list-decimal list-inside text-zinc-300 leading-relaxed space-y-2 mb-6">
+      <li>Web search for the server's official announcement, repo, and npm package.</li>
+      <li>Fetch the repo URL directly and record the HTTP status.</li>
+      <li>
+        Fetch <code class="text-zinc-200">registry.npmjs.org/&lt;package&gt;</code> for npm packages
+        — the real signal of whether a package exists.
+      </li>
+      <li>
+        Where a declared repo URL turned out stale (found during this build: a reference server's
+        documented subpath, and one of the maintainer's own packages), link to the nearest verified
+        real URL instead, noted on that entry's detail page — or the entry is dropped entirely.
+      </li>
+    </ol>
+
+    <h2 class="text-sm uppercase tracking-wider text-zinc-400 font-mono mt-8 mb-3">
+      Why fewer entries than a rounder number
+    </h2>
+    <p class="text-zinc-300 leading-relaxed mb-6">
+      This directory would rather ship a shorter list where every single entry is real and checked
+      than pad the count with anything unverifiable. More entries get added over time — the bar
+      stays the same as the list grows.
+    </p>
+
+    <p class="text-zinc-400 text-sm">
+      Full provenance log: <a
+        href="https://github.com/effinrich/mcp-atlas/blob/main/DATA_PROVENANCE.md"
+        class="underline hover:text-zinc-300">DATA_PROVENANCE.md</a
+      > in the repo.
+    </p>
+  </div>
+</BaseLayout>

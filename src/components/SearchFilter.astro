@@ -1,0 +1,79 @@
+---
+interface Props {
+  categories: string[];
+}
+
+const { categories } = Astro.props;
+---
+
+<div class="flex flex-col md:flex-row gap-4 mb-8">
+  <div class="relative flex-1">
+    <input
+      id="search-input"
+      type="search"
+      placeholder="Search by name or description…"
+      class="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-4 py-2.5 text-sm text-zinc-200 placeholder-zinc-500 focus:outline-none focus:border-zinc-700 transition-colors"
+      aria-label="Search servers"
+    />
+  </div>
+  <div class="flex gap-3">
+    <select
+      id="category-filter"
+      class="appearance-none bg-zinc-900 border border-zinc-800 rounded-lg pl-4 pr-8 py-2.5 text-sm text-zinc-300 focus:outline-none focus:border-zinc-700 cursor-pointer"
+      aria-label="Filter by category"
+    >
+      <option value="all">All categories</option>
+      {categories.map((c) => <option value={c}>{c}</option>)}
+    </select>
+    <select
+      id="official-filter"
+      class="appearance-none bg-zinc-900 border border-zinc-800 rounded-lg pl-4 pr-8 py-2.5 text-sm text-zinc-300 focus:outline-none focus:border-zinc-700 cursor-pointer"
+      aria-label="Filter by official status"
+    >
+      <option value="all">All sources</option>
+      <option value="official">Official only</option>
+      <option value="community">Community only</option>
+    </select>
+  </div>
+</div>
+
+<p id="results-count" class="text-[11px] uppercase tracking-wider text-zinc-400 font-mono mb-4 px-1">
+</p>
+
+<script>
+  const searchInput = document.getElementById("search-input") as HTMLInputElement;
+  const categoryFilter = document.getElementById("category-filter") as HTMLSelectElement;
+  const officialFilter = document.getElementById("official-filter") as HTMLSelectElement;
+  const resultsCount = document.getElementById("results-count") as HTMLElement;
+  const emptyState = document.getElementById("empty-state") as HTMLElement;
+  const cards = Array.from(document.querySelectorAll<HTMLElement>(".server-card"));
+
+  function applyFilters() {
+    const query = searchInput.value.trim().toLowerCase();
+    const category = categoryFilter.value;
+    const official = officialFilter.value;
+
+    let visibleCount = 0;
+
+    for (const card of cards) {
+      const matchesQuery =
+        query === "" ||
+        (card.dataset.name ?? "").includes(query) ||
+        (card.dataset.description ?? "").includes(query);
+      const matchesCategory = category === "all" || card.dataset.category === category;
+      const matchesOfficial = official === "all" || card.dataset.official === official;
+
+      const visible = matchesQuery && matchesCategory && matchesOfficial;
+      card.classList.toggle("hidden", !visible);
+      if (visible) visibleCount += 1;
+    }
+
+    resultsCount.textContent = `Showing ${visibleCount} of ${cards.length} ${cards.length === 1 ? "entry" : "entries"}`;
+    emptyState.classList.toggle("hidden", visibleCount !== 0);
+  }
+
+  searchInput.addEventListener("input", applyFilters);
+  categoryFilter.addEventListener("change", applyFilters);
+  officialFilter.addEventListener("change", applyFilters);
+  applyFilters();
+</script>

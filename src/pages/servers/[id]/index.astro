@@ -1,0 +1,77 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+
+export async function getStaticPaths() {
+  const servers = await getCollection("servers");
+  return servers.map((server) => ({
+    params: { id: server.id },
+    props: { server },
+  }));
+}
+
+const { server } = Astro.props;
+const { name, description, category, installCommand, repoUrl, npmPackage, official, maintained, lastVerified, sourceNote } =
+  server.data;
+
+const title = `${name} — MCP Atlas`;
+---
+
+<BaseLayout title={title} description={description}>
+  <a href="/" class="text-sm text-zinc-400 hover:text-white mb-6 inline-block">&larr; Back to all servers</a>
+
+  <div class="max-w-2xl">
+    <div class="flex items-start justify-between gap-4 mb-2">
+      <h1 class="text-2xl font-semibold tracking-tight">{name}</h1>
+      {
+        official ? (
+          <span class="shrink-0 px-2 py-0.5 rounded text-[10px] font-semibold bg-emerald-500/10 text-emerald-500 border border-emerald-500/20 mt-1">
+            OFFICIAL
+          </span>
+        ) : (
+          <span class="shrink-0 px-2 py-0.5 rounded text-[10px] font-semibold bg-blue-500/10 text-blue-400 border border-blue-500/20 mt-1">
+            COMMUNITY
+          </span>
+        )
+      }
+    </div>
+    <p class="text-[11px] font-mono text-zinc-400 uppercase tracking-tighter mb-6">{category}</p>
+
+    <p class="text-zinc-300 leading-relaxed mb-8">{description}</p>
+
+    <div class="mb-8">
+      <h2 class="text-xs uppercase tracking-wider text-zinc-400 font-mono mb-2">Install</h2>
+      <pre class="bg-zinc-900 border border-zinc-800 rounded-lg p-4 text-sm text-zinc-200 overflow-x-auto"><code>{installCommand}</code></pre>
+    </div>
+
+    <div class="flex flex-wrap gap-4 mb-8 text-sm">
+      <a href={repoUrl} class="text-blue-400 hover:text-blue-300 underline">Repository / docs →</a>
+      {
+        npmPackage && (
+          <a
+            href={`https://www.npmjs.com/package/${npmPackage}`}
+            class="text-blue-400 hover:text-blue-300 underline"
+          >
+            npm: {npmPackage} →
+          </a>
+        )
+      }
+    </div>
+
+    <dl class="grid grid-cols-2 gap-4 text-sm mb-8 border-t border-zinc-800 pt-6">
+      <div>
+        <dt class="text-zinc-400 text-xs uppercase tracking-wider mb-1">Maintained</dt>
+        <dd class="text-zinc-200">{maintained ? "Yes" : "No"}</dd>
+      </div>
+      <div>
+        <dt class="text-zinc-400 text-xs uppercase tracking-wider mb-1">Last verified</dt>
+        <dd class="text-zinc-200">{lastVerified.toISOString().slice(0, 10)}</dd>
+      </div>
+    </dl>
+
+    <div class="border-t border-zinc-800 pt-6">
+      <h2 class="text-xs uppercase tracking-wider text-zinc-400 font-mono mb-2">Source note</h2>
+      <p class="text-zinc-400 text-sm leading-relaxed">{sourceNote}</p>
+    </div>
+  </div>
+</BaseLayout>

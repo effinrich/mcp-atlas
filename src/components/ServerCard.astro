@@ -1,0 +1,48 @@
+---
+interface Props {
+  id: string;
+  name: string;
+  description: string;
+  category: string;
+  official: boolean;
+}
+
+const { id, name, description, category, official } = Astro.props;
+---
+
+<article
+  class="server-card group bg-zinc-900/40 border border-zinc-800 rounded-xl p-5 hover:bg-zinc-900 hover:border-zinc-700 transition-all duration-200 flex flex-col"
+  data-name={name.toLowerCase()}
+  data-description={description.toLowerCase()}
+  data-category={category}
+  data-official={official ? "official" : "community"}
+>
+  <div class="flex justify-between items-start mb-4 gap-3">
+    <div>
+      <h2 class="text-base font-medium tracking-tight mb-1 group-hover:text-blue-400 transition-colors">
+        {name}
+      </h2>
+      <span class="text-[11px] font-mono text-zinc-400 uppercase tracking-tighter">{category}</span>
+    </div>
+    {
+      official ? (
+        <span class="shrink-0 px-2 py-0.5 rounded text-[10px] font-semibold bg-emerald-500/10 text-emerald-500 border border-emerald-500/20">
+          OFFICIAL
+        </span>
+      ) : (
+        <span class="shrink-0 px-2 py-0.5 rounded text-[10px] font-semibold bg-blue-500/10 text-blue-400 border border-blue-500/20">
+          COMMUNITY
+        </span>
+      )
+    }
+  </div>
+  <p class="text-sm text-zinc-400 leading-relaxed mb-6 flex-1">{description}</p>
+  <div class="flex items-center justify-end mt-auto pt-4 border-t border-zinc-800/50">
+    <a
+      href={`/servers/${id}/`}
+      class="text-xs font-medium text-zinc-300 hover:text-white flex items-center gap-1"
+    >
+      View details →
+    </a>
+  </div>
+</article>
