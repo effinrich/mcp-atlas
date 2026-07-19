@@ -1,21 +1,21 @@
 # MCP Atlas
 
 A curated directory of real, verified [Model Context Protocol](https://modelcontextprotocol.io)
-servers — official and community. Every entry is sourced and link-checked before
+servers - official and community. Every entry is sourced and link-checked before
 it's added; nothing here is invented.
 
-Built by [Rich Tillman](https://richtillman.xyz) — creator of
+Built by [Rich Tillman](https://richtillman.xyz) - creator of
 [ForgeKit](https://forgekit.cloud).
 
 ## Live
 
-**[mcp-atlas-orcin.vercel.app](https://mcp-atlas-orcin.vercel.app)** — 18 real,
+**[mcp-atlas-orcin.vercel.app](https://mcp-atlas-orcin.vercel.app)** - 19 real,
 link-verified MCP servers, searchable and filterable. Lighthouse: 100 accessibility,
 97 performance.
 
 ## Tech stack
 
-- [Astro](https://astro.build) — content collections (Zod-validated) + islands
+- [Astro](https://astro.build) - content collections (Zod-validated) + islands
   architecture, only shipping JS where the page actually needs interactivity
 - TypeScript (strict)
 - Vitest (unit) + Playwright (e2e)
@@ -48,4 +48,4 @@ This project deploys to a Vercel-issued `*.vercel.app` URL automatically. To poi
    - **Proxy status:** DNS only (grey cloud), so Vercel's own TLS/CDN handles it
 3. Wait for DNS propagation, then verify the domain in Vercel's dashboard.
 
-This step isn't automated — no Cloudflare access is wired into this build.
+This step isn't automated - no Cloudflare access is wired into this build.

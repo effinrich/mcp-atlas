@@ -1,15 +1,15 @@
 ---
-import "../styles/global.css";
-// Self-hosted (not Google Fonts CDN) — avoids an extra third-party DNS/TLS
+import '../styles/global.css';
+// Self-hosted (not Google Fonts CDN) - avoids an extra third-party DNS/TLS
 // hop that measurably hurt Lighthouse performance on the real deployed site
-// (localhost testing didn't show it — real network RTT to a third-party
+// (localhost testing didn't show it - real network RTT to a third-party
 // origin does).
-import "@fontsource/inter/400.css";
-import "@fontsource/inter/500.css";
-import "@fontsource/inter/600.css";
-import "@fontsource/inter/700.css";
-import "@fontsource/jetbrains-mono/400.css";
-import "@fontsource/jetbrains-mono/500.css";
+import '@fontsource/inter/400.css';
+import '@fontsource/inter/500.css';
+import '@fontsource/inter/600.css';
+import '@fontsource/inter/700.css';
+import '@fontsource/jetbrains-mono/400.css';
+import '@fontsource/jetbrains-mono/500.css';
 
 interface Props {
   title: string;
@@ -44,7 +44,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <header class="sticky top-0 z-50 bg-zinc-950/95 backdrop-blur border-b border-zinc-800">
       <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         <a href="/" class="flex items-center gap-3">
-          <div class="w-8 h-8 bg-blue-600 rounded flex items-center justify-center text-white font-bold text-sm">
+          <div
+            class="w-8 h-8 bg-blue-600 rounded flex items-center justify-center text-white font-bold text-sm"
+          >
             M
           </div>
           <span class="text-lg font-semibold tracking-tight">MCP Atlas</span>
@@ -54,7 +56,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
             Docs
           </a>
           <a
-            href="https://github.com/modelcontextprotocol/servers/issues/new"
+            href="https://github.com/effinrich/mcp-atlas/issues/new"
             class="text-sm text-zinc-400 hover:text-white transition-colors"
           >
             Submit a server
@@ -81,7 +83,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         <p>
           Built by <a href="https://richtillman.xyz" class="hover:text-zinc-300 underline"
             >Rich Tillman</a
-          > — every entry sourced and link-checked, nothing invented.
+          > - every entry sourced and link-checked, nothing invented.
         </p>
         <a href="/data-provenance" class="hover:text-zinc-300 transition-colors"
           >How this data is verified</a

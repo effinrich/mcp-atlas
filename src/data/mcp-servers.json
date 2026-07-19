@@ -2,31 +2,31 @@
   {
     "id": "mcp-reference-servers",
     "name": "MCP Servers (reference implementations)",
-    "description": "The official reference MCP servers maintained by the Model Context Protocol project — filesystem, git, fetch, memory, and more. Educational starting points and SDK usage examples.",
+    "description": "The official reference MCP servers maintained by the Model Context Protocol project - filesystem, git, fetch, memory, and more. Educational starting points and SDK usage examples.",
     "category": "dev-tooling",
-    "installCommand": "See individual server READMEs under the repo — most run via `npx @modelcontextprotocol/server-<name>`",
+    "installCommand": "See individual server READMEs under the repo - most run via `npx @modelcontextprotocol/server-<name>`",
     "repoUrl": "https://github.com/modelcontextprotocol/servers",
     "official": true,
     "maintained": true,
     "lastVerified": "2026-07-07",
-    "sourceNote": "Repo checked live (HTTP 200) 2026-07-07. Some individual sub-server npm packages have since been deprecated in favor of vendor-hosted remote servers (see GitHub MCP Server entry) — verify per-server before relying on an npm install."
+    "sourceNote": "Repo checked live (HTTP 200) 2026-07-07. Some individual sub-server npm packages have since been deprecated in favor of vendor-hosted remote servers (see GitHub MCP Server entry) - verify per-server before relying on an npm install."
   },
   {
     "id": "github-mcp-server",
     "name": "GitHub MCP Server",
-    "description": "GitHub's official MCP server — read repositories and code, manage issues and PRs, analyze code, automate workflows. Available as a GitHub-hosted remote server or a local binary.",
+    "description": "GitHub's official MCP server - read repositories and code, manage issues and PRs, analyze code, automate workflows. Available as a GitHub-hosted remote server or a local binary.",
     "category": "dev-tooling",
     "installCommand": "Remote: connect to GitHub's hosted MCP endpoint. Local: download the binary from the repo's releases.",
     "repoUrl": "https://github.com/github/github-mcp-server",
     "official": true,
     "maintained": true,
     "lastVerified": "2026-07-07",
-    "sourceNote": "Repo checked live (HTTP 200) 2026-07-07. The old npm package (@modelcontextprotocol/server-github) is deprecated as of April 2025 — do not install that; use the current repo's remote/binary options."
+    "sourceNote": "Repo checked live (HTTP 200) 2026-07-07. The old npm package (@modelcontextprotocol/server-github) is deprecated as of April 2025 - do not install that; use the current repo's remote/binary options."
   },
   {
     "id": "supabase-mcp",
     "name": "Supabase MCP",
-    "description": "Official MCP server connecting Supabase to AI assistants — manage tables, fetch config, query data.",
+    "description": "Official MCP server connecting Supabase to AI assistants - manage tables, fetch config, query data.",
     "category": "cloud-infra",
     "installCommand": "npx -y @supabase/mcp-server-supabase@latest",
     "repoUrl": "https://github.com/supabase/mcp",
@@ -52,19 +52,19 @@
   {
     "id": "figma-mcp-server",
     "name": "Figma MCP Server (Dev Mode)",
-    "description": "Figma's official desktop MCP server — exposes selected-frame layout, structured React+Tailwind context, and design variables to AI coding agents.",
+    "description": "Figma's official desktop MCP server - exposes selected-frame layout, structured React+Tailwind context, and design variables to AI coding agents.",
     "category": "design",
     "installCommand": "Enable in the Figma desktop app: Dev Mode toolbar → Inspect panel → \"Enable desktop MCP server\" (runs locally at http://127.0.0.1:3845/mcp)",
     "repoUrl": "https://github.com/figma/mcp-server-guide",
     "official": true,
     "maintained": true,
     "lastVerified": "2026-07-07",
-    "sourceNote": "Repo checked live (HTTP 200) 2026-07-07. No npm package — this is a built-in desktop-app feature, not an installable server."
+    "sourceNote": "Repo checked live (HTTP 200) 2026-07-07. No npm package - this is a built-in desktop-app feature, not an installable server."
   },
   {
     "id": "playwright-mcp",
     "name": "Playwright MCP",
-    "description": "Microsoft's official browser-automation MCP server — drives real browsers via Playwright's accessibility tree instead of screenshots. Works with Claude Code, Cursor, VS Code, and more.",
+    "description": "Microsoft's official browser-automation MCP server - drives real browsers via Playwright's accessibility tree instead of screenshots. Works with Claude Code, Cursor, VS Code, and more.",
     "category": "dev-tooling",
     "installCommand": "npx @playwright/mcp@latest",
     "repoUrl": "https://github.com/microsoft/playwright-mcp",
@@ -77,7 +77,7 @@
   {
     "id": "cloudflare-mcp-server",
     "name": "Cloudflare MCP Server",
-    "description": "Official Cloudflare MCP server — manage Cloudflare account resources (Workers, DNS, and more) with natural language.",
+    "description": "Official Cloudflare MCP server - manage Cloudflare account resources (Workers, DNS, and more) with natural language.",
     "category": "cloud-infra",
     "installCommand": "npm i @cloudflare/mcp-server-cloudflare",
     "repoUrl": "https://github.com/cloudflare/mcp-server-cloudflare",
@@ -90,7 +90,7 @@
   {
     "id": "sentry-mcp",
     "name": "Sentry MCP",
-    "description": "Official Sentry MCP server for interacting with error tracking, issues, releases, and events via LLMs — optimized for coding assistants.",
+    "description": "Official Sentry MCP server for interacting with error tracking, issues, releases, and events via LLMs - optimized for coding assistants.",
     "category": "dev-tooling",
     "installCommand": "npm i @sentry/mcp-server",
     "repoUrl": "https://github.com/getsentry/sentry-mcp",
@@ -103,7 +103,7 @@
   {
     "id": "stripe-mcp",
     "name": "Stripe MCP",
-    "description": "Official Stripe MCP server — customers, products, payments, invoices, refunds, and more via function calling. Also available as a hosted remote server.",
+    "description": "Official Stripe MCP server - customers, products, payments, invoices, refunds, and more via function calling. Also available as a hosted remote server.",
     "category": "data",
     "installCommand": "npx -y @stripe/mcp --api-key=YOUR_STRIPE_SECRET_KEY",
     "repoUrl": "https://docs.stripe.com/mcp",
@@ -116,7 +116,7 @@
   {
     "id": "context7-mcp",
     "name": "Context7 MCP",
-    "description": "Upstash's Context7 — up-to-date code documentation for LLMs and AI code editors. Resolves library names to current docs so agents stop citing stale APIs.",
+    "description": "Upstash's Context7 - up-to-date code documentation for LLMs and AI code editors. Resolves library names to current docs so agents stop citing stale APIs.",
     "category": "dev-tooling",
     "installCommand": "npx -y @upstash/context7-mcp (or connect to the hosted endpoint at mcp.context7.com/mcp)",
     "repoUrl": "https://github.com/upstash/context7",
@@ -129,7 +129,7 @@
   {
     "id": "notion-mcp-server",
     "name": "Notion MCP Server",
-    "description": "Official Notion MCP server for the Notion API — pages, databases, and data sources, exposed to AI assistants over stdio or Streamable HTTP.",
+    "description": "Official Notion MCP server for the Notion API - pages, databases, and data sources, exposed to AI assistants over stdio or Streamable HTTP.",
     "category": "productivity",
     "installCommand": "npm i @notionhq/notion-mcp-server",
     "repoUrl": "https://github.com/makenotion/notion-mcp-server",
@@ -142,9 +142,9 @@
   {
     "id": "atlassian-mcp-server",
     "name": "Atlassian MCP Server",
-    "description": "Official remote MCP server for Atlassian — securely connects Jira, Confluence, Jira Service Management, Bitbucket, and Compass via OAuth 2.1 or API tokens.",
+    "description": "Official remote MCP server for Atlassian - securely connects Jira, Confluence, Jira Service Management, Bitbucket, and Compass via OAuth 2.1 or API tokens.",
     "category": "productivity",
-    "installCommand": "Connect your MCP client to Atlassian's hosted remote endpoint (OAuth 2.1 or API token) — see repo for setup",
+    "installCommand": "Connect your MCP client to Atlassian's hosted remote endpoint (OAuth 2.1 or API token) - see repo for setup",
     "repoUrl": "https://github.com/atlassian/atlassian-mcp-server",
     "official": true,
     "maintained": true,
@@ -154,7 +154,7 @@
   {
     "id": "neon-mcp-server",
     "name": "Neon MCP Server",
-    "description": "Official Neon MCP server — manage Neon Postgres projects, branches, and run migrations in natural language via the Neon Management API.",
+    "description": "Official Neon MCP server - manage Neon Postgres projects, branches, and run migrations in natural language via the Neon Management API.",
     "category": "cloud-infra",
     "installCommand": "npm i @neondatabase/mcp-server-neon",
     "repoUrl": "https://github.com/neondatabase/mcp-server-neon",
@@ -167,19 +167,19 @@
   {
     "id": "sanity-mcp",
     "name": "Sanity MCP",
-    "description": "Official Sanity MCP — query and manage structured content via GROQ, now served as a hosted remote server.",
+    "description": "Official Sanity MCP - query and manage structured content via GROQ, now served as a hosted remote server.",
     "category": "data",
     "installCommand": "npx sanity@latest mcp configure",
     "repoUrl": "https://www.sanity.io/docs/ai/mcp-server",
     "official": true,
     "maintained": true,
     "lastVerified": "2026-07-07",
-    "sourceNote": "Docs page checked live (HTTP 200) 2026-07-07. The older local npm package (@sanity/mcp-server) is deprecated/archived in favor of the hosted remote server at mcp.sanity.io — install command reflects the current path, not the deprecated package."
+    "sourceNote": "Docs page checked live (HTTP 200) 2026-07-07. The older local npm package (@sanity/mcp-server) is deprecated/archived in favor of the hosted remote server at mcp.sanity.io - install command reflects the current path, not the deprecated package."
   },
   {
     "id": "slack-mcp-server",
     "name": "Slack MCP Server (reference)",
-    "description": "The official reference MCP server for the Slack API — channels, messages, and workspace interaction for Claude and other MCP clients.",
+    "description": "The official reference MCP server for the Slack API - channels, messages, and workspace interaction for Claude and other MCP clients.",
     "category": "communication",
     "installCommand": "npm i @modelcontextprotocol/server-slack",
     "repoUrl": "https://github.com/modelcontextprotocol/servers",
@@ -187,12 +187,12 @@
     "official": true,
     "maintained": true,
     "lastVerified": "2026-07-07",
-    "sourceNote": "npm package confirmed live (registry.npmjs.org, HTTP 200) 2026-07-07. Its documented subpath inside the reference-servers repo (src/slack) 404'd on direct check, likely due to repo restructuring — linking to the main repo instead of the stale subpath."
+    "sourceNote": "npm package confirmed live (registry.npmjs.org, HTTP 200) 2026-07-07. Its documented subpath inside the reference-servers repo (src/slack) 404'd on direct check, likely due to repo restructuring - linking to the main repo instead of the stale subpath."
   },
   {
     "id": "linear-mcp",
     "name": "Linear MCP (official, remote)",
-    "description": "Linear's official hosted MCP server — issues, projects, and teams for AI assistants, no local install required.",
+    "description": "Linear's official hosted MCP server - issues, projects, and teams for AI assistants, no local install required.",
     "category": "productivity",
     "installCommand": "Connect your MCP client to https://mcp.linear.app/sse",
     "repoUrl": "https://linear.app/docs/mcp",
@@ -212,12 +212,12 @@
     "official": false,
     "maintained": true,
     "lastVerified": "2026-07-07",
-    "sourceNote": "npm package confirmed live (registry.npmjs.org, HTTP 200) and authored by Rich Tillman 2026-07-07. Note: the package's own package.json declares a repo URL (github.com/effinrich/chakra-figma-mcp) that now 404s — linking instead to the live public repo of the same project name, confirmed reachable (HTTP 200)."
+    "sourceNote": "npm package confirmed live (registry.npmjs.org, HTTP 200) and authored by Rich Tillman 2026-07-07. Note: the package's own package.json declares a repo URL (github.com/effinrich/chakra-figma-mcp) that now 404s - linking instead to the live public repo of the same project name, confirmed reachable (HTTP 200)."
   },
   {
     "id": "forgekit-storybook-mcp",
     "name": "ForgeKit Storybook MCP",
-    "description": "Open-source (MIT) Storybook MCP — exposes Storybook metadata/argTypes to AI coding agents, companion to the ForgeKit Nx/UI/Storybook generator suite.",
+    "description": "Open-source (MIT) Storybook MCP - exposes Storybook metadata/argTypes to AI coding agents, companion to the ForgeKit Nx/UI/Storybook generator suite.",
     "category": "dev-tooling",
     "installCommand": "npx forgekit-storybook-mcp",
     "repoUrl": "https://github.com/the-single-gentlemans-club/storybook-mcp",
@@ -226,5 +226,17 @@
     "maintained": true,
     "lastVerified": "2026-07-07",
     "sourceNote": "npm package confirmed live (registry.npmjs.org, HTTP 200) and authored by Rich Tillman 2026-07-07. Repo link confirmed reachable (HTTP 200) at its current org location."
+  },
+  {
+    "id": "xquik-mcp",
+    "name": "Xquik MCP",
+    "description": "Remote MCP server with 126 REST operations and 118 MCP operations through 2 tools for public X research and automation. Not affiliated with X Corp.",
+    "category": "data",
+    "installCommand": "Connect an OAuth 2.1 MCP client to https://xquik.com/mcp",
+    "repoUrl": "https://github.com/Xquik-dev/x-twitter-scraper",
+    "official": false,
+    "maintained": true,
+    "lastVerified": "2026-07-19",
+    "sourceNote": "Manifest v2.5.4, OAuth 2.1 metadata, remote endpoint challenge, docs, and public GitHub repository checked live on 2026-07-19. The endpoint uses Streamable HTTP and returned the expected Bearer authentication challenge."
   }
 ]
