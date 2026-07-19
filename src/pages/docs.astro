@@ -1,22 +1,21 @@
 ---
-import { getCollection } from "astro:content";
-import BaseLayout from "../layouts/BaseLayout.astro";
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
 
-const servers = await getCollection("servers");
+const servers = await getCollection('servers');
 const categories = [...new Set(servers.map((s) => s.data.category))].sort();
 const officialCount = servers.filter((s) => s.data.official).length;
 const communityCount = servers.length - officialCount;
 
-const title = "Docs — MCP Atlas";
-const description = "How MCP Atlas works, how entries are verified, and how to run it locally.";
+const title = 'Docs - MCP Atlas';
+const description = 'How MCP Atlas works, how entries are verified, and how to run it locally.';
 ---
 
 <BaseLayout title={title} description={description}>
   <div class="max-w-2xl">
     <h1 class="text-2xl font-semibold tracking-tight mb-2">Docs</h1>
     <p class="text-zinc-400 mb-10">
-      What MCP Atlas is, how to use it, and how it's built — for visitors and for
-      future-me.
+      What MCP Atlas is, how to use it, and how it's built - for visitors and for future-me.
     </p>
 
     <nav class="mb-10 border border-zinc-800 rounded-lg p-4 text-sm">
@@ -38,16 +37,13 @@ const description = "How MCP Atlas works, how entries are verified, and how to r
           >
         </li>
         <li>
-          <a href="#submitting" class="text-blue-400 hover:text-blue-300"
-            >Submitting a server</a
-          >
+          <a href="#submitting" class="text-blue-400 hover:text-blue-300">Submitting a server</a>
         </li>
         <li>
           <a href="#architecture" class="text-blue-400 hover:text-blue-300">Architecture</a>
         </li>
         <li>
-          <a href="#running-locally" class="text-blue-400 hover:text-blue-300"
-            >Running it locally</a
+          <a href="#running-locally" class="text-blue-400 hover:text-blue-300">Running it locally</a
           >
         </li>
       </ul>
@@ -56,19 +52,18 @@ const description = "How MCP Atlas works, how entries are verified, and how to r
     <section id="what-is-this" class="mb-10">
       <h2 class="text-lg font-semibold mb-3">What is this</h2>
       <p class="text-zinc-300 leading-relaxed mb-3">
-        MCP Atlas is a curated directory of real Model Context Protocol (MCP)
-        servers — the tools that let AI coding agents talk to things like GitHub,
-        Supabase, Figma, or your own database. There are a lot of MCP servers now,
-        official and community-built, and it's genuinely hard to tell which ones
-        are real, current, and worth installing versus abandoned or fake.
+        MCP Atlas is a curated directory of real Model Context Protocol (MCP) servers - the tools
+        that let AI coding agents talk to things like GitHub, Supabase, Figma, or your own database.
+        There are a lot of MCP servers now, official and community-built, and it's genuinely hard to
+        tell which ones are real, current, and worth installing versus abandoned or fake.
       </p>
       <p class="text-zinc-300 leading-relaxed">
         This directory currently lists <strong class="text-white">{servers.length}</strong>
-        entries — <strong class="text-white">{officialCount}</strong> official and
-        <strong class="text-white">{communityCount}</strong> community — across
-        {categories.length} categories. Every single one was checked live before
-        being added; see <a href="#verification" class="text-blue-400 underline"
-          >how entries are verified</a
+        entries - <strong class="text-white">{officialCount}</strong> official and
+        <strong class="text-white">{communityCount}</strong> community - across
+        {categories.length} categories. Every single one was checked live before being added; see <a
+          href="#verification"
+          class="text-blue-400 underline">how entries are verified</a
         >.
       </p>
     </section>
@@ -77,27 +72,29 @@ const description = "How MCP Atlas works, how entries are verified, and how to r
       <h2 class="text-lg font-semibold mb-3">Using the directory</h2>
       <ul class="list-disc list-inside text-zinc-300 leading-relaxed space-y-2">
         <li>
-          <strong class="text-white">Search</strong> matches against an entry's name
-          and description, live as you type — no page reload.
+          <strong class="text-white">Search</strong> matches against an entry's name and description,
+          live as you type - no page reload.
         </li>
         <li>
           <strong class="text-white">Category filter</strong> narrows to one of:
-          {categories.map((c, i) => (
-            <>
-              <code class="text-zinc-200">{c}</code>{i < categories.length - 1 ? ", " : "."}
-            </>
-          ))}
+          {
+            categories.map((c, i) => (
+              <>
+                <code class="text-zinc-200">{c}</code>
+                {i < categories.length - 1 ? ', ' : '.'}
+              </>
+            ))
+          }
         </li>
         <li>
-          <strong class="text-white">Official / community filter</strong> — official
-          means maintained by the vendor whose product it integrates with (e.g.
-          Supabase's own MCP server); community means built and maintained by
-          someone else.
+          <strong class="text-white">Official / community filter</strong> - official means maintained
+          by the vendor whose product it integrates with (e.g. Supabase's own MCP server); community means
+          built and maintained by someone else.
         </li>
         <li>
           Every entry has a detail page (<code class="text-zinc-200">/servers/&lt;id&gt;</code>)
-          with the exact install command, links, and a source note explaining how
-          that specific entry was verified.
+          with the exact install command, links, and a source note explaining how that specific
+          entry was verified.
         </li>
       </ul>
     </section>
@@ -108,26 +105,24 @@ const description = "How MCP Atlas works, how entries are verified, and how to r
         <div>
           <dt class="text-zinc-200 font-medium">Install command</dt>
           <dd class="text-zinc-400">
-            Copy-pasteable as shown — usually an <code class="text-zinc-200">npx</code>
-            invocation, sometimes a manual setup step for remote-hosted servers
-            (Atlassian, Linear) that don't install locally at all.
+            Copy-pasteable as shown - usually an <code class="text-zinc-200">npx</code>
+            invocation, sometimes a manual setup step for remote-hosted servers (Atlassian, Linear) that
+            don't install locally at all.
           </dd>
         </div>
         <div>
           <dt class="text-zinc-200 font-medium">Maintained</dt>
           <dd class="text-zinc-400">
-            Whether the entry was actively maintained as of its last-verified date
-            — not a live status check, a point-in-time judgment made during
-            verification.
+            Whether the entry was actively maintained as of its last-verified date - not a live
+            status check, a point-in-time judgment made during verification.
           </dd>
         </div>
         <div>
           <dt class="text-zinc-200 font-medium">Last verified</dt>
           <dd class="text-zinc-400">
-            The date someone (so far, just the maintainer) actually fetched the
-            repo/npm links and confirmed they resolve. Entries aren't re-checked
-            automatically — an old date is a hint to double check before relying
-            on it.
+            The date someone (so far, just the maintainer) actually fetched the repo/npm links and
+            confirmed they resolve. Entries aren't re-checked automatically - an old date is a hint
+            to double check before relying on it.
           </dd>
         </div>
       </dl>
@@ -136,17 +131,15 @@ const description = "How MCP Atlas works, how entries are verified, and how to r
     <section id="verification" class="mb-10">
       <h2 class="text-lg font-semibold mb-3">How entries are verified</h2>
       <p class="text-zinc-300 leading-relaxed mb-3">
-        The short version: every entry's repo link is fetched directly, and every
-        npm package is checked against the npm registry API (not npmjs.com's
-        package page, which blocks automated requests regardless of whether the
-        package is real). Nothing is added on the strength of a search result
-        alone.
+        The short version: every entry's repo link is fetched directly, and every npm package is
+        checked against the npm registry API (not npmjs.com's package page, which blocks automated
+        requests regardless of whether the package is real). Nothing is added on the strength of a
+        search result alone.
       </p>
       <p class="text-zinc-300 leading-relaxed">
-        Full methodology, plus the specific catches from the last verification pass
-        (a couple of stale links, one project's own <code class="text-zinc-200"
-          >package.json</code
-        > pointing at a dead repo), are on the
+        Full methodology, plus the specific catches from the last verification pass (a couple of
+        stale links, one project's own <code class="text-zinc-200">package.json</code> pointing at a dead
+        repo), are on the
         <a href="/data-provenance" class="text-blue-400 underline">data provenance page</a>.
       </p>
     </section>
@@ -154,15 +147,11 @@ const description = "How MCP Atlas works, how entries are verified, and how to r
     <section id="submitting" class="mb-10">
       <h2 class="text-lg font-semibold mb-3">Submitting a server</h2>
       <p class="text-zinc-300 leading-relaxed">
-        There's no submission form yet — this is a curated v1, not user-generated.
-        The "Submit a server" link in the header opens a new issue on the official
-        MCP servers repo, which is the right place to propose a genuinely new
-        server to the ecosystem. To suggest an addition to this specific directory,
-        open an issue or PR on
+        There's no submission form yet - this is a curated v1, not user-generated. The "Submit a
+        server" link in the header opens a new issue on
         <a href="https://github.com/effinrich/mcp-atlas" class="text-blue-400 underline"
           >the MCP Atlas repo</a
-        > directly — include the repo/npm link so it can be verified the same way
-        every other entry was.
+        >. Include the repo or npm link so it can be verified the same way every other entry was.
       </p>
     </section>
 
@@ -170,33 +159,33 @@ const description = "How MCP Atlas works, how entries are verified, and how to r
       <h2 class="text-lg font-semibold mb-3">Architecture</h2>
       <ul class="list-disc list-inside text-zinc-300 leading-relaxed space-y-2">
         <li>
-          <strong class="text-white">Astro content collections</strong> — entries
-          live in <code class="text-zinc-200">src/data/mcp-servers.json</code>,
-          validated at build time against a Zod schema
-          (<code class="text-zinc-200">src/content.config.ts</code>). A malformed
-          entry fails the build; it can't ship silently broken.
+          <strong class="text-white">Astro content collections</strong> - entries live in <code
+            class="text-zinc-200">src/data/mcp-servers.json</code
+          >, validated at build time against a Zod schema (<code class="text-zinc-200"
+            >src/content.config.ts</code
+          >). A malformed entry fails the build; it can't ship silently broken.
         </li>
         <li>
-          <strong class="text-white">Zero JS by default</strong> — every page is
-          static HTML except the search/filter bar, which is a single small
-          vanilla-JS island. No framework runtime shipped for a directory that's
-          fundamentally just filtering a list.
+          <strong class="text-white">Zero JS by default</strong> - every page is static HTML except the
+          search/filter bar, which is a single small vanilla-JS island. No framework runtime shipped for
+          a directory that's fundamentally just filtering a list.
         </li>
         <li>
-          <strong class="text-white">No backend</strong> — no database, no API, no
-          write path. The whole site is static output, deployed to Vercel.
+          <strong class="text-white">No backend</strong> - no database, no API, no write path. The whole
+          site is static output, deployed to Vercel.
         </li>
       </ul>
     </section>
 
     <section id="running-locally">
       <h2 class="text-lg font-semibold mb-3">Running it locally</h2>
-      <pre class="bg-zinc-900 border border-zinc-800 rounded-lg p-4 text-sm overflow-x-auto"><code>git clone https://github.com/effinrich/mcp-atlas
+      <pre
+        class="bg-zinc-900 border border-zinc-800 rounded-lg p-4 text-sm overflow-x-auto"><code>git clone https://github.com/effinrich/mcp-atlas
 cd mcp-atlas
 pnpm install
 pnpm dev</code></pre>
       <p class="text-zinc-400 text-sm mt-3">
-        No environment variables needed — there's nothing to configure. See the
+        No environment variables needed - there's nothing to configure. See the
         <a href="https://github.com/effinrich/mcp-atlas#readme" class="text-blue-400 underline"
           >README</a
         > for the full command list (typecheck, lint, test, e2e).
