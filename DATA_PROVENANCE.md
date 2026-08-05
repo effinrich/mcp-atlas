@@ -1,18 +1,18 @@
 # Data provenance
 
-Every entry in `src/data/mcp-servers.json` was sourced via live web search and
-verified via a real HTTP check (repo URL and, where applicable, the npm registry
-API) on **2026-07-07**. Per-entry verification notes live in each entry's
-`sourceNote` field.
+Every entry in `src/data/mcp-servers.json` was sourced via live web research and
+verified with real HTTP checks. The initial 18 entries were checked on
+**2026-07-07**, and Xquik was checked on **2026-07-19**. Per-entry verification
+notes live in each entry's `sourceNote` field.
 
-## Why 18, not a rounder number
+## Why the list stays intentionally small
 
 The build target was "at least 25, all real." Research turned up plenty of
 candidate community servers, but several either had ambiguous official status,
 declared repo URLs that no longer resolve, or existed only as unverifiable
 third-party forks. Rather than pad the list with anything shaky, this v1 ships
-18 entries that were individually checked and are traceable to a real source.
-More entries — official and vetted community ones — get added in follow-up
+19 entries that were individually checked and are traceable to a real source.
+More entries - official and vetted community ones - get added in follow-up
 passes; the bar (real, checked, sourced) stays the same as the list grows.
 
 ## Verification method
@@ -20,7 +20,7 @@ passes; the bar (real, checked, sourced) stays the same as the list grows.
 1. WebSearch for the server's official announcement, repo, and npm package.
 2. `curl` the repo URL directly (`-L`, browser UA) and record the HTTP status.
 3. `curl` the npm registry API (`registry.npmjs.org/<package>`) rather than
-   npmjs.com's package page directly — npmjs.com blocks non-browser requests
+   npmjs.com's package page directly - npmjs.com blocks non-browser requests
    with a 403 regardless of whether the package is real, so the registry API is
    the actual signal of whether a package exists.
 4. Where a repo URL 404'd (found during this pass: the Slack reference server's
@@ -36,5 +36,5 @@ passes; the bar (real, checked, sourced) stays the same as the list grows.
   path and notes the deprecated package rather than the deprecated package
   itself.
 - The reference `modelcontextprotocol/servers` repo's internal folder structure
-  is not stable — a subpath that resolves today may not resolve next quarter.
+  is not stable - a subpath that resolves today may not resolve next quarter.
   Prefer linking to the repo root over deep subpaths where possible.
